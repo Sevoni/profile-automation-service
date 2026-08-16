@@ -233,6 +233,47 @@ def send_vk(link):
     return True
 
 
+def send_telegram(link):
+    token = os.environ.get("TG_BOT_TOKEN", "").strip()
+    chat_id = os.environ.get("TG_CHAT_ID", "").strip()
+    if not token or not chat_id:
+        print(
+            "WARNING: TG_BOT_TOKEN/TG_CHAT_ID not set; skipping Telegram send",
+            file=sys.stderr,
+        )
+        return False
+    payload = {
+        "chat_id": chat_id,
+        "text": f'FRKN: новая ссылка подписки\n<a href="{link}">{link}</a>',
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True,
+    }
+    data = json.dumps(payload).encode("utf-8")
+    request = urllib.request.Request(
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        data=data,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=30) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        raw = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"Telegram send failed (HTTP {exc.code}): {raw}")
+    except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+        raise RuntimeError(f"Telegram send network error: {exc}")
+    if not result.get("ok"):
+        raise RuntimeError(f"Telegram send error: {result.get('description')}")
+    print(
+        f"Telegram message sent (msg_id={result.get('result', {}).get('message_id')})"
+    )
+    return True
+
+
 def main():
     domain = mailtm_get_domain()
     address = f"frkn.{uuid.uuid4().hex[:16]}@{domain}"
@@ -265,6 +306,7 @@ def main():
     print(f"Link: {link}")
 
     send_vk(link)
+    send_telegram(link)
 
 
 if __name__ == "__main__":
