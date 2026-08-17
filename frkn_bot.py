@@ -14,6 +14,10 @@ import urllib.request
 FRKN_API = "https://api.frkn.org"
 SUB_BASE = "https://sub.frkn.org"
 CONFIG_PATH = os.path.join("docs", "sub.txt")
+STATE_PATH = "sub_state.json"
+
+TRIAL_HOURS = 72
+RENEW_BEFORE_HOURS = 1.5
 
 REQUEST_RETRIES = 4
 REQUEST_BACKOFF_SEC = 5
@@ -157,8 +161,30 @@ def publish_config(config_text):
     print(f"Config written to {CONFIG_PATH} ({len(config_text)} bytes)")
 
 
-def main():
-    sub_id = None
+def read_state():
+    try:
+        with open(STATE_PATH, encoding="utf-8") as fh:
+            return json.load(fh)
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def write_state(sub_id, created_at):
+    with open(STATE_PATH, "w", encoding="utf-8") as fh:
+        json.dump({"subscription_id": sub_id, "created_at": created_at}, fh)
+    print(f"State saved to {STATE_PATH}")
+
+
+def should_renew(state):
+    sub_id = state.get("subscription_id")
+    created_at = state.get("created_at")
+    if not sub_id or not created_at:
+        return True
+    age_hours = (time.time() - created_at) / 3600
+    return age_hours >= TRIAL_HOURS - RENEW_BEFORE_HOURS
+
+
+def register_subscription():
     for attempt in range(1, REGISTER_ATTEMPTS + 1):
         email = generate_email()
         print(f"Registering with {email} (attempt {attempt}) ...")
@@ -169,18 +195,36 @@ def main():
             continue
         api_id = (api_resp or {}).get("subscription_id")
         if api_id:
-            sub_id = api_id
-            break
+            return api_id
         print(
             f"API returned no subscription_id (attempt {attempt})",
             file=sys.stderr,
         )
+    return None
 
+
+def main():
+    state = read_state()
+    if not should_renew(state):
+        sub_id = state["subscription_id"]
+        print(f"Subscription ID: {sub_id} (refreshing config)")
+        try:
+            config_text = download_subscription_config(sub_id)
+            publish_config(config_text)
+            return
+        except RuntimeError as exc:
+            print(
+                f"Subscription {sub_id} unavailable ({exc}); registering a new one",
+                file=sys.stderr,
+            )
+
+    sub_id = register_subscription()
     if not sub_id:
         print("ERROR: could not obtain subscription ID", file=sys.stderr)
         sys.exit(1)
 
     print(f"Subscription ID: {sub_id}")
+    write_state(sub_id, int(time.time()))
     config_text = download_subscription_config(sub_id)
     publish_config(config_text)
 
