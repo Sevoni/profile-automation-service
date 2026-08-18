@@ -11,10 +11,13 @@ import sys
 import time
 import urllib.error
 import urllib.request
+import zipfile
 
 FRKN_API = "https://api.frkn.org"
 SUB_BASE = "https://sub.frkn.org"
 CONFIG_PATH = os.path.join("docs", "sub.txt")
+AWG_PATH = os.path.join("docs", "awg.txt")
+AWG_ZIP_PATH = os.path.join("docs", "awg_configs.zip")
 STATE_PATH = "sub_state.json"
 
 TRIAL_HOURS = 72
@@ -172,7 +175,13 @@ def download_connection_configs(sub_id, protocol, env):
     nodes = (data or {}).get("nodes") if isinstance(data, dict) else None
     if not isinstance(nodes, list) or not nodes:
         raise RuntimeError(f"frkn: {protocol} ({env}) returned no configs")
-    return [str(node["config"]).strip() for node in nodes]
+    return [
+        {
+            "label": str(node.get("label", "")).strip(),
+            "config": str(node["config"]).strip(),
+        }
+        for node in nodes
+    ]
 
 
 def apply_awg_overrides(config_text):
@@ -187,32 +196,94 @@ def apply_awg_overrides(config_text):
     return "\n".join(lines)
 
 
-def build_extra_configs(sub_id):
-    sections = []
+def fetch_awg_and_ru(sub_id):
+    awg_nodes = []
+    ru_nodes = []
     try:
-        awg = [
-            apply_awg_overrides(config)
-            for config in download_connection_configs(sub_id, "amneziawg", AWG_ENV)
-        ]
-        sections.append(f"\n# ===== AmneziaWG ({AWG_ENV}) =====\n\n" + "\n\n".join(awg))
+        awg_nodes = download_connection_configs(sub_id, "amneziawg", AWG_ENV)
     except RuntimeError as exc:
         print(f"Warning: no AmneziaWG configs ({exc})", file=sys.stderr)
     try:
-        ru_wg = download_connection_configs(sub_id, "wireguard", RU_WG_ENV)
-        sections.append(f"\n# ===== WireGuard ({RU_WG_ENV}) =====\n\n" + "\n\n".join(ru_wg))
+        ru_nodes = download_connection_configs(sub_id, "wireguard", RU_WG_ENV)
     except RuntimeError as exc:
         print(f"Warning: no WireGuard {RU_WG_ENV} configs ({exc})", file=sys.stderr)
+    return awg_nodes, ru_nodes
+
+
+def build_extra_text(awg_nodes, ru_nodes):
+    sections = []
+    if awg_nodes:
+        awg = [apply_awg_overrides(node["config"]) for node in awg_nodes]
+        sections.append(f"\n# ===== AmneziaWG ({AWG_ENV}) =====\n\n" + "\n\n".join(awg))
+    if ru_nodes:
+        ru_wg = [node["config"] for node in ru_nodes]
+        sections.append(
+            f"\n# ===== WireGuard ({RU_WG_ENV}) =====\n\n" + "\n\n".join(ru_wg)
+        )
     if not sections:
         return None
     return "\n".join(sections)
 
 
+def sanitize_label(label):
+    name = re.sub(r"[^\w\-]+", "_", label).strip("_")
+    return name or "node"
+
+
+def build_awg_zip(awg_nodes, ru_nodes):
+    entries = []
+    used = set()
+    for node in awg_nodes:
+        base = sanitize_label(node["label"])
+        name = base
+        i = 2
+        while name in used:
+            name = f"{base}_{i}"
+            i += 1
+        used.add(name)
+        entries.append((f"{name}.conf", apply_awg_overrides(node["config"])))
+    for node in ru_nodes:
+        base = sanitize_label(node["label"]) or "wg_ru"
+        name = base
+        i = 2
+        while name in used:
+            name = f"{base}_{i}"
+            i += 1
+        used.add(name)
+        entries.append((f"{name}.conf", node["config"]))
+    if not entries:
+        return False
+    os.makedirs(os.path.dirname(AWG_ZIP_PATH), exist_ok=True)
+    with zipfile.ZipFile(AWG_ZIP_PATH, "w", zipfile.ZIP_DEFLATED) as zf:
+        for name, config in entries:
+            zf.writestr(name, config)
+    print(f"Archive written to {AWG_ZIP_PATH} ({len(entries)} configs)")
+    return True
+
+
+def write_text(path, text):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    print(f"Config written to {path} ({len(text)} bytes)")
+
+
 def fetch_and_publish(sub_id):
+    awg_nodes, ru_nodes = fetch_awg_and_ru(sub_id)
+
     config_text = download_subscription_config(sub_id)
-    extra = build_extra_configs(sub_id)
-    if extra:
-        config_text = config_text.rstrip("\n") + "\n" + extra + "\n"
     publish_config(config_text)
+
+    extra = build_extra_text(awg_nodes, ru_nodes)
+    if extra:
+        write_text(AWG_PATH, extra + "\n")
+    else:
+        write_text(AWG_PATH, "# no AmneziaWG configs\n")
+
+    if not build_awg_zip(awg_nodes, ru_nodes):
+        print("Warning: no configs for archive", file=sys.stderr)
+        if os.path.exists(AWG_ZIP_PATH):
+            os.remove(AWG_ZIP_PATH)
 
 
 def publish_config(config_text):
