@@ -1,6 +1,6 @@
 #profile-title:_FRKN_Reelsprovod
 #profile-update-interval:_1
-#subscription-userinfo:_upload=149186856;_download=1143595587;_total=0;_expire=1787228357
+#subscription-userinfo:_upload=155618436;_download=1216265399;_total=0;_expire=1787228357
 #profile-web-page-url:_https://frkn.org/subscription?id=c02306ed-c4dd-434c-a3c4-5969c3b208b6
 #support-url:_https://t.me/frkn_support
 hysteria2://ad52b7db-8a45-4a0d-b068-c72df13f75e0@nl2.frkn.org:8443?insecure=false&up-mbps=0#Netherlands22%20%F0%9F%8F%B4%3C200d%3E%E2%98%A0%EF%B8%8F%20%20c72df13f75e0%20H2
@@ -10,6 +10,7 @@ hysteria2://ad52b7db-8a45-4a0d-b068-c72df13f75e0@swe3.frkn.org:443?insecure=fals
 hysteria2://ad52b7db-8a45-4a0d-b068-c72df13f75e0@labs.frkn.org:443?insecure=false&up-mbps=0#Great%20Britain%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%20c72df13f75e0%20H2
 vless://ea44103d-734e-4f7b-a8a0-6a57ac3a0412@194.164.216.245:8445?security=reality&type=grpc&serviceName=grpc&sni=reels.frkn.org&pbk=LZF1JDaVO0Mk_YHH19G5Pv1_jVKm_k_0KcJCWhMHRQo&sid=fe8565750f25#Great%20Britain%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%206a57ac3a0412%20GRPC
 vless://fa932c29-a5a6-4f1a-9081-7fe2e8b61b82@194.164.216.245:8443?security=reality&flow=xtls-rprx-vision&type=tcp&sni=reels.frkn.org&fp=chrome&pbk=LZF1JDaVO0Mk_YHH19G5Pv1_jVKm_k_0KcJCWhMHRQo&sid=fe8565750f25#Great%20Britain%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%207fe2e8b61b82%20XTLS
+hysteria2://ad52b7db-8a45-4a0d-b068-c72df13f75e0@hel.frkn.org:443?insecure=false&up-mbps=0#Suomi%20%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%20c72df13f75e0%20H2
 vless://0430e17a-551b-4d76-ab89-4be7d4fb4c27@cdn2.frkn.org:443?encryption=none&security=tls&type=xhttp&host=cdn2.frkn.org&path=%2Fxhttp&sni=cdn2.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlonSuomi%20%F0%9F%90%98%20%204be7d4fb4c27%20XHTTP-CDN
 vless://ea44103d-734e-4f7b-a8a0-6a57ac3a0412@45.141.177.244:8445?security=reality&type=grpc&serviceName=grpc&sni=reels.frkn.org&pbk=ZXvgBIvhN87thoELQot4o6b6Fe9n_wATxfobHRAwgys&sid=0498897564df#SWE4%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%206a57ac3a0412%20GRPC
 vless://fa932c29-a5a6-4f1a-9081-7fe2e8b61b82@45.141.177.244:8443?security=reality&flow=xtls-rprx-vision&type=tcp&sni=reels.frkn.org&fp=chrome&pbk=ZXvgBIvhN87thoELQot4o6b6Fe9n_wATxfobHRAwgys&sid=0498897564df#SWE4%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%207fe2e8b61b82%20XTLS
