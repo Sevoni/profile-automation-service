@@ -1,6 +1,6 @@
 #profile-title:_FRKN_Reelsprovod
 #profile-update-interval:_1
-#subscription-userinfo:_upload=175294228;_download=1820307032;_total=0;_expire=1787228357
+#subscription-userinfo:_upload=182630276;_download=2181352432;_total=0;_expire=1787228357
 #profile-web-page-url:_https://frkn.org/subscription?id=c02306ed-c4dd-434c-a3c4-5969c3b208b6
 #support-url:_https://t.me/frkn_support
 hysteria2://ad52b7db-8a45-4a0d-b068-c72df13f75e0@hel.frkn.org:443?insecure=false&up-mbps=0#Suomi%20%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%20c72df13f75e0%20H2
