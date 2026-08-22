@@ -56,12 +56,12 @@ I4 = 0
 I5 = 0
 
 [Peer]
-PublicKey = b7/fpIYE4TSx932MxH1neHu+fetgDvs7kHVstlU2QmU=
-Endpoint = 72.56.66.230:8443
+PublicKey = FG/+rbykmxTqX+u2VJ9z4vUDt0gGn5bIgqSukyT2mDg=
+Endpoint = 78.17.28.66:443
 AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25
 
-# NL4 🏴‍☠️  — conn_id: 463c0329-33a5-4526-aa2e-b3913a6b8631
+# Netherlands 67 🏴‍☠️ — conn_id: 463c0329-33a5-4526-aa2e-b3913a6b8631
 
 [Interface]
 PrivateKey = m4LDf9t6DU7dO+YkczwrRNzFv9nEbvoW/bntuzjEdGY=
@@ -118,12 +118,12 @@ I4 = 0
 I5 = 0
 
 [Peer]
-PublicKey = cJRxoCK7cjucOBJqBlZJX9IkiweJ4fyqR9plBYWhwFw=
-Endpoint = 5.180.43.201:8444
+PublicKey = b7/fpIYE4TSx932MxH1neHu+fetgDvs7kHVstlU2QmU=
+Endpoint = 72.56.66.230:8443
 AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25
 
-# Kazakhstan — conn_id: 463c0329-33a5-4526-aa2e-b3913a6b8631
+# NL4 🏴‍☠️  — conn_id: 463c0329-33a5-4526-aa2e-b3913a6b8631
 
 [Interface]
 PrivateKey = m4LDf9t6DU7dO+YkczwrRNzFv9nEbvoW/bntuzjEdGY=
@@ -149,12 +149,12 @@ I4 = 0
 I5 = 0
 
 [Peer]
-PublicKey = FG/+rbykmxTqX+u2VJ9z4vUDt0gGn5bIgqSukyT2mDg=
-Endpoint = 78.17.28.66:443
+PublicKey = DrgKjEqZaPW+Wodw2Hl/b5Q9RME63kxPPSheVwSQhVw=
+Endpoint = 138.124.25.95:8443
 AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25
 
-# Netherlands 67 🏴‍☠️ — conn_id: 463c0329-33a5-4526-aa2e-b3913a6b8631
+# Suomi2 🏴‍☠️  — conn_id: 463c0329-33a5-4526-aa2e-b3913a6b8631
 
 [Interface]
 PrivateKey = m4LDf9t6DU7dO+YkczwrRNzFv9nEbvoW/bntuzjEdGY=
@@ -211,12 +211,12 @@ I4 = 0
 I5 = 0
 
 [Peer]
-PublicKey = DrgKjEqZaPW+Wodw2Hl/b5Q9RME63kxPPSheVwSQhVw=
-Endpoint = 138.124.25.95:8443
+PublicKey = cJRxoCK7cjucOBJqBlZJX9IkiweJ4fyqR9plBYWhwFw=
+Endpoint = 5.180.43.201:8444
 AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25
 
-# Suomi2 🏴‍☠️  — conn_id: 463c0329-33a5-4526-aa2e-b3913a6b8631
+# Kazakhstan — conn_id: 463c0329-33a5-4526-aa2e-b3913a6b8631
 
 [Interface]
 PrivateKey = hd+oVtPFFhRT5S48GsRLS4XovcTCjwuAvwPufVuEYzI=
@@ -255,13 +255,13 @@ Address = 100.64.4.0/32
 MTU = 1280
 DNS = 1.1.1.1
 
-Jc = 7
-Jmin = 41
-Jmax = 144
-S1 = 58
-S2 = 43
-S3 = 25
-S4 = 19
+Jc = 8
+Jmin = 60
+Jmax = 91
+S1 = 60
+S2 = 55
+S3 = 32
+S4 = 18
 H1 = 100000-200000
 H2 = 300000-400000
 H3 = 500000-600000
@@ -273,12 +273,12 @@ I4 = 0
 I5 = 0
 
 [Peer]
-PublicKey = MXgIdqbahvz4P7Y7eh2w+s1JxRBHnnV7gN533BgsQzA=
-Endpoint = 5.180.43.201:51820
+PublicKey = UlQCwAaQfC9m6MTwQCB5ib4b+asWn5v6zH3NZfs0BAY=
+Endpoint = 78.17.28.66:51820
 AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25
 
-# Kazakhstan — conn_id: 36be3a72-5223-4276-8b10-2682917562f1
+# Netherlands 67 🏴‍☠️ — conn_id: 36be3a72-5223-4276-8b10-2682917562f1
 
 [Interface]
 PrivateKey = hd+oVtPFFhRT5S48GsRLS4XovcTCjwuAvwPufVuEYzI=
@@ -314,16 +314,16 @@ PersistentKeepalive = 25
 [Interface]
 PrivateKey = hd+oVtPFFhRT5S48GsRLS4XovcTCjwuAvwPufVuEYzI=
 Address = 100.64.4.0/32
-MTU = 1280
+MTU = 1420
 DNS = 1.1.1.1
 
-Jc = 8
-Jmin = 60
-Jmax = 91
-S1 = 60
-S2 = 55
-S3 = 32
-S4 = 18
+Jc = 7
+Jmin = 66
+Jmax = 112
+S1 = 46
+S2 = 75
+S3 = 19
+S4 = 22
 H1 = 100000-200000
 H2 = 300000-400000
 H3 = 500000-600000
@@ -335,12 +335,12 @@ I4 = 0
 I5 = 0
 
 [Peer]
-PublicKey = UlQCwAaQfC9m6MTwQCB5ib4b+asWn5v6zH3NZfs0BAY=
-Endpoint = 78.17.28.66:51820
+PublicKey = DrgKjEqZaPW+Wodw2Hl/b5Q9RME63kxPPSheVwSQhVw=
+Endpoint = 138.124.25.95:443
 AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25
 
-# Netherlands 67 🏴‍☠️ — conn_id: 36be3a72-5223-4276-8b10-2682917562f1
+# Suomi2 🏴‍☠️  — conn_id: 36be3a72-5223-4276-8b10-2682917562f1
 
 [Interface]
 PrivateKey = hd+oVtPFFhRT5S48GsRLS4XovcTCjwuAvwPufVuEYzI=
@@ -376,16 +376,16 @@ PersistentKeepalive = 25
 [Interface]
 PrivateKey = hd+oVtPFFhRT5S48GsRLS4XovcTCjwuAvwPufVuEYzI=
 Address = 100.64.4.0/32
-MTU = 1420
+MTU = 1280
 DNS = 1.1.1.1
 
 Jc = 7
-Jmin = 66
-Jmax = 112
-S1 = 46
-S2 = 75
-S3 = 19
-S4 = 22
+Jmin = 41
+Jmax = 144
+S1 = 58
+S2 = 43
+S3 = 25
+S4 = 19
 H1 = 100000-200000
 H2 = 300000-400000
 H3 = 500000-600000
@@ -397,9 +397,9 @@ I4 = 0
 I5 = 0
 
 [Peer]
-PublicKey = DrgKjEqZaPW+Wodw2Hl/b5Q9RME63kxPPSheVwSQhVw=
-Endpoint = 138.124.25.95:443
+PublicKey = MXgIdqbahvz4P7Y7eh2w+s1JxRBHnnV7gN533BgsQzA=
+Endpoint = 5.180.43.201:51820
 AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25
 
-# Suomi2 🏴‍☠️  — conn_id: 36be3a72-5223-4276-8b10-2682917562f1
+# Kazakhstan — conn_id: 36be3a72-5223-4276-8b10-2682917562f1
