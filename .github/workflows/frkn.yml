@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -24,6 +23,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install dependencies
+        run: pip install pyyaml cryptography
+
       - name: Run FRKN bot
         run: python frkn_bot.py
 
@@ -32,17 +34,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/sub.txt docs/awg.txt docs/awg_configs.zip sub_state.json
+          # Шифрование отключено: вернуть при включении age
+          # git add docs/clash.yaml.age
           if git diff --cached --quiet; then
-            echo "docs/sub.txt unchanged; nothing to commit"
+            echo "nothing changed; nothing to commit"
           else
             git commit -m "Update FRKN subscription config"
             git push
           fi
-
-      - name: Enable GitHub Pages
-        run: |
-          curl -s -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"source":{"branch":"main","path":"/docs"}}' || echo "Pages already enabled or cannot enable"

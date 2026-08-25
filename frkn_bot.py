@@ -3,6 +3,9 @@
 take subscription_id from the API response -> download config from
 sub.frkn.org -> save to docs/sub.txt so GitHub Pages serves it."""
 
+import base64
+import hashlib
+import hmac
 import json
 import os
 import random
@@ -10,6 +13,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
 
@@ -18,7 +22,17 @@ SUB_BASE = "https://sub.frkn.org"
 CONFIG_PATH = os.path.join("docs", "sub.txt")
 AWG_PATH = os.path.join("docs", "awg.txt")
 AWG_ZIP_PATH = os.path.join("docs", "awg_configs.zip")
+CLASH_YAML_PATH = os.path.join("docs", "clash.yaml")
+CLASH_AGE_PATH = os.path.join("docs", "clash.yaml.age")
 STATE_PATH = "sub_state.json"
+
+DEFAULT_AGE_PUBLIC_KEY = (
+    "age15j00qgx4zqqqgtfnzlj2e2740t856jypnufmzkra7kzv3lapqs4q4qypej"
+)
+AGE_PUBLIC_KEY = os.environ.get("AGE_PUBLIC_KEY", DEFAULT_AGE_PUBLIC_KEY)
+
+AUTO_GROUP_NAME = "⚡️ Авто"
+VPN_GROUP_NAME = "🛡️ VPN"
 
 TRIAL_HOURS = 72
 RENEW_BEFORE_HOURS = 1.5
@@ -37,6 +51,69 @@ USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
 )
+
+CLASH_BASE = {
+    "mode": "rule",
+    "ipv6": False,
+    "log-level": "warning",
+    "allow-lan": True,
+    "bind-address": "*",
+    "unified-delay": True,
+    "tcp-concurrent": True,
+    "mixed-port": 7890,
+    "external-controller": "127.0.0.1:9090",
+    "dns": {
+        "enable": True,
+        "listen": "127.0.0.1:1053",
+        "ipv6": False,
+        "enhanced-mode": "fake-ip",
+        "fake-ip-range": "198.18.0.1/16",
+        "default-nameserver": [
+            "system",
+            "9.9.9.9",
+            "77.88.8.8",
+            "83.220.169.155",
+        ],
+        "nameserver": [
+            "https://dns.comss.one/dns-query",
+            "83.220.169.155",
+            "212.109.195.93",
+            "195.133.25.16",
+        ],
+        "nameserver-policy": {
+            "+.ru": ["system", "9.9.9.9", "149.112.112.112", "77.88.8.8"],
+            "+.su": ["system", "9.9.9.9", "149.112.112.112", "77.88.8.8"],
+            "+.\u0440\u0444": [
+                "system",
+                "9.9.9.9",
+                "149.112.112.112",
+                "77.88.8.8",
+            ],
+        },
+    },
+    "tun": {
+        "enable": True,
+        "stack": "mixed",
+        "auto-route": True,
+        "auto-detect-interface": True,
+        "strict-route": True,
+        "mtu": 1280,
+        "dns-hijack": ["any:53"],
+    },
+    "rules": [
+        "IP-CIDR,8.39.125.7/32,DIRECT,no-resolve",
+        "GEOIP,private,DIRECT,no-resolve",
+        "IP-CIDR,127.0.0.0/8,DIRECT,no-resolve",
+        "IP-CIDR,192.168.0.0/16,DIRECT,no-resolve",
+        "IP-CIDR,10.0.0.0/8,DIRECT,no-resolve",
+        "IP-CIDR,172.16.0.0/12,DIRECT,no-resolve",
+        "DOMAIN-SUFFIX,ru,DIRECT",
+        "DOMAIN-SUFFIX,su,DIRECT",
+        "DOMAIN-SUFFIX,xn--p1ai,DIRECT",
+        "GEOIP,RU,DIRECT",
+        "MATCH,\U0001f6e1\ufe0f VPN",
+    ],
+}
 
 FIRST_NAMES_MALE = [
     "ivan", "alexey", "alexandr", "dmitry", "sergey", "andrey", "mikhail",
@@ -245,6 +322,408 @@ def write_text(path, text):
     print(f"Config written to {path} ({len(text)} bytes)")
 
 
+def write_bytes(path, blob):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "wb") as fh:
+        fh.write(blob)
+    print(f"Config written to {path} ({len(blob)} bytes)")
+
+
+def unique_name(name, used):
+    base = name.strip() or "proxy"
+    candidate = base
+    i = 2
+    while candidate in used:
+        candidate = f"{base} #{i}"
+        i += 1
+    used.add(candidate)
+    return candidate
+
+
+def parse_awg_config(config_text, label):
+    sections = {}
+    section = None
+    for line in config_text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("["):
+            name = stripped.strip("[]").strip().lower()
+            if name == "interface" and sections.get("interface"):
+                break
+            section = name
+            sections.setdefault(section, {})
+            continue
+        if section is None or "=" not in stripped:
+            continue
+        key, value = stripped.split("=", 1)
+        sections[section][key.strip().upper()] = value.strip()
+
+    iface = sections.get("interface", {})
+    peer = sections.get("peer", {})
+
+    endpoint = peer.get("ENDPOINT", "")
+    host, sep, port_str = endpoint.rpartition(":")
+    if not sep or not host:
+        raise ValueError(f"AWG config {label!r}: bad endpoint {endpoint!r}")
+
+    address = iface.get("ADDRESS", "").split(",")[0].strip()
+    local_ip = address.split("/")[0].strip()
+    if not local_ip:
+        raise ValueError(f"AWG config {label!r}: no Address")
+
+    awg_option = {}
+    for key in (
+        "JC", "JMIN", "JMAX",
+        "S1", "S2", "S3", "S4",
+        "H1", "H2", "H3", "H4",
+        "I1", "I2", "I3", "I4", "I5",
+    ):
+        raw = iface.get(key)
+        if raw is None or raw == "":
+            continue
+        awg_option[key.lower()] = int(raw) if raw.isdigit() else raw
+
+    allowed_ips = [
+        cidr.strip()
+        for cidr in peer.get("ALLOWEDIPS", "").split(",")
+        if cidr.strip()
+    ]
+
+    proxy = {
+        "name": label,
+        "type": "wireguard",
+        "server": host.strip(),
+        "port": int(port_str),
+        "ip": local_ip,
+        "private-key": iface.get("PRIVATEKEY", ""),
+        "public-key": peer.get("PUBLICKEY", ""),
+        "udp": True,
+    }
+    mtu = iface.get("MTU")
+    if mtu and mtu.isdigit():
+        proxy["mtu"] = int(mtu)
+    if allowed_ips:
+        proxy["allowed-ips"] = allowed_ips
+    if awg_option:
+        proxy["amnezia-wg-option"] = awg_option
+    return proxy
+
+
+def parse_share_link(link):
+    scheme, _, rest = link.partition("://")
+    if not _:
+        return None
+    scheme = scheme.lower()
+
+    fragment_sep = rest.find("#")
+    if fragment_sep >= 0:
+        name = urllib.parse.unquote(rest[fragment_sep + 1:]).strip()
+        rest = rest[:fragment_sep]
+    else:
+        name = ""
+
+    userinfo_sep = rest.rfind("@")
+    if userinfo_sep >= 0:
+        credential = urllib.parse.unquote(rest[:userinfo_sep])
+        hostport = rest[userinfo_sep + 1:]
+    else:
+        credential = ""
+        hostport = rest
+
+    query_sep = hostport.find("?")
+    if query_sep >= 0:
+        query = dict(
+            urllib.parse.parse_qsl(hostport[query_sep + 1:], keep_blank_values=True)
+        )
+        hostport = hostport[:query_sep]
+    else:
+        query = {}
+
+    host, sep, port_str = hostport.rpartition(":")
+    if not sep or not host:
+        return None
+
+    if scheme == "hysteria2":
+        proxy = {
+            "name": name,
+            "type": "hysteria2",
+            "server": host,
+            "port": int(port_str),
+            "password": credential,
+            "skip-cert-verify": query.get("insecure", "").lower() == "true",
+        }
+        sni = query.get("sni")
+        if sni:
+            proxy["sni"] = sni
+        for src, dst in (("up-mbps", "up"), ("down-mbps", "down")):
+            value = query.get(src)
+            if value and value.isdigit() and int(value) > 0:
+                proxy[dst] = int(value)
+        obfs_password = query.get("obfs-password")
+        if obfs_password:
+            proxy["obfs"] = query.get("obfs", "salamander")
+            proxy["obfs-password"] = obfs_password
+        return proxy
+
+    if scheme == "vless":
+        transport = query.get("type", "tcp").lower()
+        if transport == "xhttp":
+            return None
+        security = query.get("security", "none").lower()
+        proxy = {
+            "name": name,
+            "type": "vless",
+            "server": host,
+            "port": int(port_str),
+            "uuid": credential,
+            "udp": True,
+        }
+        if security in ("tls", "reality"):
+            proxy["tls"] = True
+            sni = query.get("sni") or query.get("host")
+            if sni:
+                proxy["servername"] = sni
+            fp = query.get("fp")
+            if fp:
+                proxy["client-fingerprint"] = fp
+        if security == "reality":
+            reality_opts = {}
+            if query.get("pbk"):
+                reality_opts["public-key"] = query["pbk"]
+            if query.get("sid"):
+                reality_opts["short-id"] = query["sid"]
+            if reality_opts:
+                proxy["reality-opts"] = reality_opts
+        flow = query.get("flow")
+        if flow:
+            proxy["flow"] = flow
+        if transport == "grpc":
+            proxy["network"] = "grpc"
+            service_name = query.get("serviceName")
+            if service_name:
+                proxy["grpc-opts"] = {"grpc-service-name": service_name}
+        elif transport == "ws":
+            proxy["network"] = "ws"
+            ws_opts = {"path": urllib.parse.unquote(query.get("path", "/"))}
+            if query.get("host"):
+                ws_opts["headers"] = {"Host": query["host"]}
+            proxy["ws-opts"] = ws_opts
+        return proxy
+
+    return None
+
+
+def collect_sub_proxies(sub_text, used_names):
+    proxies = []
+    for line in sub_text.splitlines():
+        link = line.strip()
+        if not link or link.startswith("#"):
+            continue
+        try:
+            proxy = parse_share_link(link)
+        except (ValueError, KeyError) as exc:
+            print(f"Warning: skip bad link ({exc})", file=sys.stderr)
+            continue
+        if proxy is None:
+            print(
+                f"Warning: unsupported share link skipped: "
+                f"{link.split('://', 1)[0]}://...",
+                file=sys.stderr,
+            )
+            continue
+        proxy["name"] = unique_name(proxy["name"], used_names)
+        proxies.append(proxy)
+    return proxies
+
+
+def build_clash_config(awg_nodes, sub_text):
+    import yaml
+
+    used_names = set()
+    proxies = []
+    for node in awg_nodes:
+        try:
+            proxy = parse_awg_config(
+                apply_awg_overrides(node["config"]), node["label"]
+            )
+        except (ValueError, KeyError) as exc:
+            print(f"Warning: skip AWG node ({exc})", file=sys.stderr)
+            continue
+        proxy["name"] = unique_name(proxy["name"], used_names)
+        proxies.append(proxy)
+
+    proxies.extend(collect_sub_proxies(sub_text, used_names))
+
+    auto_group = {
+        "name": AUTO_GROUP_NAME,
+        "type": "url-test",
+        "tolerance": 100,
+        "url": "https://www.gstatic.com/generate_204",
+        "interval": 15,
+        "include-all": True,
+        "hidden": True,
+    }
+    vpn_group = {
+        "name": VPN_GROUP_NAME,
+        "type": "select",
+        "proxies": [AUTO_GROUP_NAME, "DIRECT"]
+        + [proxy["name"] for proxy in proxies],
+    }
+
+    config = dict(CLASH_BASE)
+    config["proxies"] = proxies
+    config["proxy-groups"] = [auto_group, vpn_group]
+    return yaml.dump(
+        config, allow_unicode=True, sort_keys=False, width=1000000
+    )
+
+
+BECH32_CHARSET = "qpzry9x8gf2tvdw0s3jn54khce6mua7l"
+BECH32_GENERATOR = (0x3B6A57B2, 0x26508E6D, 0x1EA119FA, 0x3D4233DD, 0x2A1462B3)
+
+
+def _bech32_polymod(values):
+    chk = 1
+    for value in values:
+        top = chk >> 25
+        chk = ((chk & 0x1FFFFFF) << 5) ^ value
+        for i in range(5):
+            if (top >> i) & 1:
+                chk ^= BECH32_GENERATOR[i]
+    return chk
+
+
+def _bech32_hrp_expand(hrp):
+    return [ord(c) >> 5 for c in hrp] + [0] + [ord(c) & 31 for c in hrp]
+
+
+def _bech32_convert_bits(data, from_bits, to_bits, pad=True):
+    acc = 0
+    bits = 0
+    ret = []
+    maxv = (1 << to_bits) - 1
+    max_acc = (1 << (from_bits + to_bits - 1)) - 1
+    for value in data:
+        acc = ((acc << from_bits) | value) & max_acc
+        bits += from_bits
+        while bits >= to_bits:
+            bits -= to_bits
+            ret.append((acc >> bits) & maxv)
+    if pad and bits:
+        ret.append((acc << (to_bits - bits)) & maxv)
+    elif pad is False and bits >= from_bits:
+        raise ValueError("Invalid padding")
+    return ret
+
+
+def bech32_decode(address):
+    address = address.strip().lower()
+    pos = address.rfind("1")
+    if pos < 1:
+        raise ValueError("bad bech32 address")
+    hrp = address[:pos]
+    data = []
+    for char in address[pos + 1:]:
+        idx = BECH32_CHARSET.find(char)
+        if idx < 0:
+            raise ValueError(f"bad bech32 character {char!r}")
+        data.append(idx)
+    if _bech32_polymod(_bech32_hrp_expand(hrp) + data) != 1:
+        raise ValueError("bad bech32 checksum")
+    return bytes(_bech32_convert_bits(data[:-6], 5, 8, pad=False))
+
+
+AGE_HEADER_FIRST_LINE = "age-encryption.org/v1"
+AGE_X25519_INFO = b"age-encryption.org/v1/X25519"
+AGE_HKDF_INFO_HEADER = b"header"
+AGE_HKDF_INFO_PAYLOAD = b"payload"
+AGE_CHUNK_SIZE = 64 * 1024
+
+
+def encrypt_age(data, recipient):
+    from cryptography.hazmat.primitives import hashes
+    from cryptography.hazmat.primitives.asymmetric.x25519 import (
+        X25519PrivateKey,
+        X25519PublicKey,
+    )
+    from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
+    from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+    from cryptography.hazmat.primitives.serialization import (
+        Encoding,
+        PublicFormat,
+    )
+
+    recipient_pub = bech32_decode(recipient)
+    if len(recipient_pub) != 32:
+        raise ValueError("age recipient key must be 32 bytes")
+
+    file_key = os.urandom(16)
+
+    ephemeral = X25519PrivateKey.generate()
+    ephemeral_pub = ephemeral.public_key().public_bytes(
+        Encoding.Raw, PublicFormat.Raw
+    )
+    shared_secret = ephemeral.exchange(
+        X25519PublicKey.from_public_bytes(recipient_pub)
+    )
+
+    wrap_salt = ephemeral_pub + recipient_pub
+    wrap_key = HKDF(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=wrap_salt,
+        info=AGE_X25519_INFO,
+    ).derive(shared_secret)
+    wrapped = ChaCha20Poly1305(wrap_key).encrypt(
+        b"\x00" * 12, file_key, None
+    )
+
+    def b64raw(raw):
+        return base64.b64encode(raw).decode("ascii").rstrip("=")
+
+    header = (
+        f"{AGE_HEADER_FIRST_LINE}\n"
+        f"-> X25519 {b64raw(ephemeral_pub)}\n"
+        f"{b64raw(wrapped)}\n"
+        "---"
+    )
+
+    mac_key = HKDF(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=None,
+        info=AGE_HKDF_INFO_HEADER,
+    ).derive(file_key)
+    mac = hmac.new(mac_key, header.encode("ascii"), hashlib.sha256).digest()
+
+    stream_nonce = os.urandom(16)
+    payload_key = HKDF(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=stream_nonce,
+        info=AGE_HKDF_INFO_PAYLOAD,
+    ).derive(file_key)
+    aead = ChaCha20Poly1305(payload_key)
+
+    body = bytearray()
+    total_chunks = max(1, -(-len(data) // AGE_CHUNK_SIZE))
+    for index in range(total_chunks):
+        chunk = data[index * AGE_CHUNK_SIZE:(index + 1) * AGE_CHUNK_SIZE]
+        is_final = index == total_chunks - 1
+        nonce = index.to_bytes(11, "big") + (b"\x01" if is_final else b"\x00")
+        body += aead.encrypt(nonce, chunk, None)
+
+    return (
+        header.encode("ascii")
+        + b" "
+        + b64raw(mac).encode("ascii")
+        + b"\n"
+        + stream_nonce
+        + bytes(body)
+    )
+
+
 def fetch_and_publish(sub_id):
     awg_nodes = fetch_awg(sub_id)
 
@@ -261,6 +740,23 @@ def fetch_and_publish(sub_id):
         print("Warning: no configs for archive", file=sys.stderr)
         if os.path.exists(AWG_ZIP_PATH):
             os.remove(AWG_ZIP_PATH)
+
+    clash_text = build_clash_config(awg_nodes, config_text)
+    write_text(CLASH_YAML_PATH, clash_text)
+
+    # Шифрование age временно отключено (проверка yaml-конфига).
+    # if AGE_PUBLIC_KEY:
+    #     try:
+    #         blob = encrypt_age(clash_text.encode("utf-8"), AGE_PUBLIC_KEY)
+    #     except Exception as exc:
+    #         print(f"Warning: age encryption failed ({exc})", file=sys.stderr)
+    #     else:
+    #         write_bytes(CLASH_AGE_PATH, blob)
+    # else:
+    #     print(
+    #         "Warning: AGE_PUBLIC_KEY not set, skip clash.yaml.age",
+    #         file=sys.stderr,
+    #     )
 
 
 def publish_config(config_text):
