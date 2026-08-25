@@ -382,6 +382,8 @@ def parse_awg_config(config_text, label):
         raw = iface.get(key)
         if raw is None or raw == "":
             continue
+        if key.startswith("I") and len(key) == 2 and raw == "0":
+            continue
         awg_option[key.lower()] = int(raw) if raw.isdigit() else raw
 
     allowed_ips = [
