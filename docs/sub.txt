@@ -1,6 +1,6 @@
 #profile-title:_FRKN_Reelsprovod
 #profile-update-interval:_1
-#subscription-userinfo:_upload=10464;_download=29810;_total=0;_expire=1787739300
+#subscription-userinfo:_upload=164205640;_download=491137102;_total=0;_expire=1787739300
 #profile-web-page-url:_https://frkn.org/subscription?id=6414caf0-0fb9-4f63-81c2-b75d12f6e07d
 #support-url:_https://t.me/frkn_support
 vless://63da2c31-f9b3-49f0-a137-c936f9e39255@cdn2.frkn.org:443?encryption=none&security=tls&type=xhttp&host=cdn2.frkn.org&path=%2Fxhttp&sni=cdn2.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlonSuomi%20%F0%9F%90%98%20%20c936f9e39255%20XHTTP-CDN

@@ -11,6 +11,8 @@ frkn_bot.CONFIG_PATH = os.path.join(TEST_OUT, "sub.txt")
 frkn_bot.AWG_PATH = os.path.join(TEST_OUT, "awg.txt")
 frkn_bot.AWG_ZIP_PATH = os.path.join(TEST_OUT, "awg_configs.zip")
 frkn_bot.STATE_PATH = os.path.join(TEST_OUT, "sub_state.json")
+frkn_bot.CLASH_YAML_PATH = os.path.join(TEST_OUT, "clash.yaml")
+frkn_bot.CLASH_AGE_PATH = os.path.join(TEST_OUT, "clash.yaml.age")
 
 calls = []
 

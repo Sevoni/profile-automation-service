@@ -412,6 +412,26 @@ def parse_awg_config(config_text, label):
     return proxy
 
 
+XHTTP_EXTRA_KEY_MAP = {
+    "uplinkHTTPMethod": "uplink-http-method",
+    "xPaddingBytes": "x-padding-bytes",
+    "xPaddingHeader": "x-padding-header",
+    "xPaddingKey": "x-padding-key",
+    "xPaddingMethod": "x-padding-method",
+    "xPaddingObfsMode": "x-padding-obfs-mode",
+    "xPaddingPlacement": "x-padding-placement",
+    "noGRPCHeader": "no-grpc-header",
+    "sessionPlacement": "session-placement",
+    "sessionKey": "session-key",
+    "sessionTable": "session-table",
+    "sessionLength": "session-length",
+    "seqPlacement": "seq-placement",
+    "seqKey": "seq-key",
+    "scMaxEachPostBytes": "sc-max-each-post-bytes",
+    "scMinPostsIntervalMs": "sc-min-posts-interval-ms",
+}
+
+
 def parse_share_link(link):
     scheme, _, rest = link.partition("://")
     if not _:
@@ -455,9 +475,7 @@ def parse_share_link(link):
             "password": credential,
             "skip-cert-verify": query.get("insecure", "").lower() == "true",
         }
-        sni = query.get("sni")
-        if sni:
-            proxy["sni"] = sni
+        proxy["sni"] = query.get("sni") or host
         for src, dst in (("up-mbps", "up"), ("down-mbps", "down")):
             value = query.get(src)
             if value and value.isdigit() and int(value) > 0:
@@ -470,8 +488,6 @@ def parse_share_link(link):
 
     if scheme == "vless":
         transport = query.get("type", "tcp").lower()
-        if transport == "xhttp":
-            return None
         security = query.get("security", "none").lower()
         proxy = {
             "name": name,
@@ -483,12 +499,8 @@ def parse_share_link(link):
         }
         if security in ("tls", "reality"):
             proxy["tls"] = True
-            sni = query.get("sni") or query.get("host")
-            if sni:
-                proxy["servername"] = sni
-            fp = query.get("fp")
-            if fp:
-                proxy["client-fingerprint"] = fp
+            proxy["servername"] = query.get("sni") or query.get("host") or host
+            proxy["client-fingerprint"] = query.get("fp") or "chrome"
         if security == "reality":
             reality_opts = {}
             if query.get("pbk"):
@@ -511,6 +523,31 @@ def parse_share_link(link):
             if query.get("host"):
                 ws_opts["headers"] = {"Host": query["host"]}
             proxy["ws-opts"] = ws_opts
+        elif transport == "xhttp":
+            proxy["network"] = "xhttp"
+            xhttp_opts = {}
+            if query.get("path"):
+                xhttp_opts["path"] = urllib.parse.unquote(query["path"])
+            if query.get("host"):
+                xhttp_opts["host"] = query["host"]
+            if query.get("mode"):
+                xhttp_opts["mode"] = query["mode"]
+            extra_raw = query.get("extra")
+            if extra_raw:
+                try:
+                    extra = json.loads(extra_raw)
+                except ValueError:
+                    extra = {}
+                if isinstance(extra, dict):
+                    for key, value in extra.items():
+                        opt_key = XHTTP_EXTRA_KEY_MAP.get(key)
+                        if opt_key is None:
+                            opt_key = re.sub(r"([a-z0-9])([A-Z])", r"\1-\2", key).lower()
+                        if isinstance(value, str) and value.lower() in ("true", "false"):
+                            value = value.lower() == "true"
+                        xhttp_opts[opt_key] = value
+            if xhttp_opts:
+                proxy["xhttp-opts"] = xhttp_opts
         return proxy
 
     return None
