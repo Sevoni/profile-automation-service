@@ -783,19 +783,18 @@ def fetch_and_publish(sub_id):
     clash_text = build_clash_config(awg_nodes, config_text)
     write_text(CLASH_YAML_PATH, clash_text)
 
-    # Шифрование age временно отключено (проверка yaml-конфига).
-    # if AGE_PUBLIC_KEY:
-    #     try:
-    #         blob = encrypt_age(clash_text.encode("utf-8"), AGE_PUBLIC_KEY)
-    #     except Exception as exc:
-    #         print(f"Warning: age encryption failed ({exc})", file=sys.stderr)
-    #     else:
-    #         write_bytes(CLASH_AGE_PATH, blob)
-    # else:
-    #     print(
-    #         "Warning: AGE_PUBLIC_KEY not set, skip clash.yaml.age",
-    #         file=sys.stderr,
-    #     )
+    if AGE_PUBLIC_KEY:
+        try:
+            blob = encrypt_age(clash_text.encode("utf-8"), AGE_PUBLIC_KEY)
+        except Exception as exc:
+            print(f"Warning: age encryption failed ({exc})", file=sys.stderr)
+        else:
+            write_bytes(CLASH_AGE_PATH, blob)
+    else:
+        print(
+            "Warning: AGE_PUBLIC_KEY not set, skip clash.yaml.age",
+            file=sys.stderr,
+        )
 
 
 def publish_config(config_text):
