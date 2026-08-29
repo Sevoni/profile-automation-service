@@ -17,7 +17,7 @@ hysteria2://eea3b9a4-b483-4581-8975-3c1ad8454448@swe.frkn.org:8443?insecure=fals
 hysteria2://eea3b9a4-b483-4581-8975-3c1ad8454448@hel241.frkn.org:8443?insecure=false&up-mbps=0#Suomi2%20Proxy%20%203c1ad8454448%20H2
 vless://ba6d3650-4add-4500-ba98-35ecef08aea5@89.22.228.241:8444?security=reality&type=grpc&serviceName=grpc&sni=max.ru&pbk=Aon1COX85s5akwuMDx7CTiJCVpfSA5FZU6abpZedaF8&sid=9861f2b5edd7#Suomi2%20Proxy%20%2035ecef08aea5%20GRPC
 vless://b936b691-c70f-4b57-a79b-08c84d9d256d@89.22.228.241:8443?security=reality&flow=xtls-rprx-vision&type=tcp&sni=max.ru&fp=chrome&pbk=uXZLBd0Oo4whnPdrpByupJq_3hdTvly9kIaGtAWSKyE&sid=d713844be494#Suomi2%20Proxy%20%2008c84d9d256d%20XTLS
-hysteria2://eea3b9a4-b483-4581-8975-3c1ad8454448@swe3.frkn.org:443?insecure=false&up-mbps=0#SWE3%20Proxy%20%203c1ad8454448%20H2
+hysteria2://eea3b9a4-b483-4581-8975-3c1ad8454448@swe3.frkn.org:8443?insecure=false&up-mbps=0#SWE3%20Proxy%20%203c1ad8454448%20H2
 vless://ba6d3650-4add-4500-ba98-35ecef08aea5@89.22.232.71:8444?security=reality&type=grpc&serviceName=grpc&sni=max.ru&pbk=Aon1COX85s5akwuMDx7CTiJCVpfSA5FZU6abpZedaF8&sid=9861f2b5edd7#SWE3%20Proxy%20%2035ecef08aea5%20GRPC
 vless://b936b691-c70f-4b57-a79b-08c84d9d256d@89.22.232.71:8443?security=reality&flow=xtls-rprx-vision&type=tcp&sni=max.ru&fp=chrome&pbk=uXZLBd0Oo4whnPdrpByupJq_3hdTvly9kIaGtAWSKyE&sid=d713844be494#SWE3%20Proxy%20%2008c84d9d256d%20XTLS
 hysteria2://eea3b9a4-b483-4581-8975-3c1ad8454448@hel91.frkn.org:443?insecure=false&up-mbps=0#Suomi%20%203c1ad8454448%20H2
