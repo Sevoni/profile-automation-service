@@ -8,8 +8,6 @@ vless://0f3d1d54-876c-451c-a47e-01bada72700f@194.164.216.245:8445?security=reali
 vless://ea939779-dc9c-4303-bab2-66355d2106c7@194.164.216.245:8443?security=reality&flow=xtls-rprx-vision&type=tcp&sni=reels.frkn.org&fp=chrome&pbk=LZF1JDaVO0Mk_YHH19G5Pv1_jVKm_k_0KcJCWhMHRQo&sid=fe8565750f25#Great%20Britain%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%2066355d2106c7%20XTLS
 hysteria2://1b962c12-82af-4035-b0ef-8c137b76c376@swe67.frkn.org:8443?insecure=false&up-mbps=0#SWE67%20Proxy%20%208c137b76c376%20H2
 hysteria2://1b962c12-82af-4035-b0ef-8c137b76c376@fr.frkn.org:8444?insecure=false&up-mbps=0#France%20AWG3.1%20%208c137b76c376%20H2
-hysteria2://1b962c12-82af-4035-b0ef-8c137b76c376@hel91.frkn.org:443?insecure=false&up-mbps=0#Suomi%20%208c137b76c376%20H2
-vless://f547e1dd-1cbd-4c1c-9265-12b6d8f9fc92@repo2.frkn.org:443?encryption=none&security=tls&type=xhttp&host=repo2.frkn.org&path=%2Fdownloads&sni=repo2.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlonSuomi%20%F0%9F%90%98%20%2012b6d8f9fc92%20XHTTP-CDN
 hysteria2://1b962c12-82af-4035-b0ef-8c137b76c376@ee.frkn.org:8443?insecure=false&up-mbps=0#EST1%20%208c137b76c376%20H2
 vless://0f3d1d54-876c-451c-a47e-01bada72700f@94.198.54.132:8443?security=reality&type=grpc&serviceName=grpc&sni=reels.frkn.org&pbk=ZXvgBIvhN87thoELQot4o6b6Fe9n_wATxfobHRAwgys&sid=0498897564df#Auto:%20Moscow+SWE+CZ%20%2001bada72700f%20GRPC
 hysteria2://1b962c12-82af-4035-b0ef-8c137b76c376@france2.frkn.org:443?insecure=false&up-mbps=0#France2%20%208c137b76c376%20H2
