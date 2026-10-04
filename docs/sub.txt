@@ -1,12 +1,11 @@
 #profile-title:_FRKN_Reelsprovod
 #profile-update-interval:_1
-#subscription-userinfo:_upload=855205648;_download=898593844;_total=10737418240;_expire=1791143953
+#subscription-userinfo:_upload=896183740;_download=1399788955;_total=10737418240;_expire=1791143953
 #profile-web-page-url:_https://frkn.org/subscription?id=8ee23174-c931-40d4-924a-c29211e80e76
 #support-url:_https://t.me/frkn_support
 hysteria2://1b962c12-82af-4035-b0ef-8c137b76c376@labs.frkn.org:443?insecure=false&up-mbps=0#Great%20Britain%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%208c137b76c376%20H2
 vless://0f3d1d54-876c-451c-a47e-01bada72700f@194.164.216.245:8445?security=reality&type=grpc&serviceName=grpc&sni=reels.frkn.org&pbk=LZF1JDaVO0Mk_YHH19G5Pv1_jVKm_k_0KcJCWhMHRQo&sid=fe8565750f25#Great%20Britain%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%2001bada72700f%20GRPC
 vless://ea939779-dc9c-4303-bab2-66355d2106c7@194.164.216.245:8443?security=reality&flow=xtls-rprx-vision&type=tcp&sni=reels.frkn.org&fp=chrome&pbk=LZF1JDaVO0Mk_YHH19G5Pv1_jVKm_k_0KcJCWhMHRQo&sid=fe8565750f25#Great%20Britain%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20%20%2066355d2106c7%20XTLS
-hysteria2://1b962c12-82af-4035-b0ef-8c137b76c376@swe67.frkn.org:8443?insecure=false&up-mbps=0#SWE67%20Proxy%20%208c137b76c376%20H2
 hysteria2://1b962c12-82af-4035-b0ef-8c137b76c376@fr.frkn.org:8444?insecure=false&up-mbps=0#France%20AWG3.1%20%208c137b76c376%20H2
 hysteria2://1b962c12-82af-4035-b0ef-8c137b76c376@ee.frkn.org:8443?insecure=false&up-mbps=0#EST1%20%208c137b76c376%20H2
 vless://0f3d1d54-876c-451c-a47e-01bada72700f@94.198.54.132:8443?security=reality&type=grpc&serviceName=grpc&sni=reels.frkn.org&pbk=ZXvgBIvhN87thoELQot4o6b6Fe9n_wATxfobHRAwgys&sid=0498897564df#Auto:%20Moscow+SWE+CZ%20%2001bada72700f%20GRPC
