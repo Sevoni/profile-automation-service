@@ -4,6 +4,9 @@
 #profile-web-page-url:_https://frkn.org/subscription?id=43dc117d-a6cf-4cad-9f79-8f344bc367a3
 #support-url:_https://t.me/frkn_support
 hysteria2://af5b10a8-1f96-4b62-888f-b349cf811c16@hel241.frkn.org:8888?insecure=false&up-mbps=0#Suomi2%20%20b349cf811c16%20H2
+hysteria2://af5b10a8-1f96-4b62-888f-b349cf811c16@swe67.frkn.org:8443?insecure=false&up-mbps=0#SWE67%20Proxy%20%20b349cf811c16%20H2
 hysteria2://af5b10a8-1f96-4b62-888f-b349cf811c16@fr.frkn.org:8444?insecure=false&up-mbps=0#France%20AWG3.1%20%20b349cf811c16%20H2
+hysteria2://af5b10a8-1f96-4b62-888f-b349cf811c16@hel91.frkn.org:443?insecure=false&up-mbps=0#Suomi%20%20b349cf811c16%20H2
+vless://b8347ff7-0510-411e-968c-91f14b5a3bd9@repo2.frkn.org:443?encryption=none&security=tls&type=xhttp&host=repo2.frkn.org&path=%2Fdownloads&sni=repo2.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlonSuomi%20%F0%9F%90%98%20%2091f14b5a3bd9%20XHTTP-CDN
 hysteria2://af5b10a8-1f96-4b62-888f-b349cf811c16@ee.frkn.org:8443?insecure=false&up-mbps=0#EST1%20%20b349cf811c16%20H2
 hysteria2://af5b10a8-1f96-4b62-888f-b349cf811c16@france2.frkn.org:443?insecure=false&up-mbps=0#France2%20%20b349cf811c16%20H2
