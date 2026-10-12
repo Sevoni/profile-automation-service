@@ -4,5 +4,4 @@
 #profile-web-page-url:_https://frkn.org/subscription?id=1b17147a-18f9-4c04-a39d-44b19eeeae39
 #support-url:_https://t.me/frkn_support
 vless://7d824e26-27a7-4de2-8cf0-a2cf4caa9e12@bs.frkn.org:443?encryption=none&security=tls&type=xhttp&host=bs.frkn.org&path=%2Fdownloads&sni=bs.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlon%20%20a2cf4caa9e12%20XHTTP-CDN
-hysteria2://8e0cc566-0a95-4f25-bc48-9b4347535577@fr.frkn.org:8444?insecure=false&up-mbps=0#France%20AWG3.1%20%209b4347535577%20H2
 hysteria2://8e0cc566-0a95-4f25-bc48-9b4347535577@ee.frkn.org:8443?insecure=false&up-mbps=0#EST1%20%209b4347535577%20H2
