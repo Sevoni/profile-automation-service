@@ -5,3 +5,4 @@
 #support-url:_https://t.me/frkn_support
 hysteria2://7d987978-570f-4f6e-aa6e-2293b0f2ae8c@fr.frkn.org:8444?insecure=false&up-mbps=0#France%20AWG3.1%20%202293b0f2ae8c%20H2
 vless://9e2c282f-34ad-4d39-a5f6-cbaefa26bfcb@repo2.frkn.org:443?encryption=none&security=tls&type=xhttp&host=repo2.frkn.org&path=%2Fdownloads&sni=repo2.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlonSuomi%20%F0%9F%90%98%20%20cbaefa26bfcb%20XHTTP-CDN
+hysteria2://7d987978-570f-4f6e-aa6e-2293b0f2ae8c@ee.frkn.org:8443?insecure=false&up-mbps=0#EST1%20%202293b0f2ae8c%20H2
