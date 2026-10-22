@@ -1,8 +1,7 @@
 #profile-title:_FRKN_Reelsprovod
 #profile-update-interval:_1
-#subscription-userinfo:_upload=11518258;_download=32801778;_total=10737418240;_expire=1792708912
+#subscription-userinfo:_upload=16672022;_download=87340647;_total=10737418240;_expire=1792708912
 #profile-web-page-url:_https://frkn.org/subscription?id=fdadd931-fd9d-4c44-a0df-6159d6b5d226
 #support-url:_https://t.me/frkn_support
 vless://45e1b7e7-9e84-45c7-afe3-5458a93c391c@bs.frkn.org:443?encryption=none&security=tls&type=xhttp&host=bs.frkn.org&path=%2Fdownloads&sni=bs.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlon%20%205458a93c391c%20XHTTP-CDN
-hysteria2://1a564ee8-1103-45d3-8b05-506de9782fb3@hel241.frkn.org:8888?insecure=false&up-mbps=0#Suomi2%20%20506de9782fb3%20H2
 hysteria2://1a564ee8-1103-45d3-8b05-506de9782fb3@ee.frkn.org:8443?insecure=false&up-mbps=0#EST1%20%20506de9782fb3%20H2
