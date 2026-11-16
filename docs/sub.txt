@@ -1,11 +1,11 @@
 #profile-title:_FRKN_Reelsprovod
 #profile-update-interval:_1
-#subscription-userinfo:_upload=0;_download=0;_total=10737418240;_expire=1794833055
-#profile-web-page-url:_https://frkn.org/subscription?id=1985730e-0d60-4262-99ba-b13d1487261a
+#subscription-userinfo:_upload=0;_download=0;_total=10737418240;_expire=1795110126
+#profile-web-page-url:_https://frkn.org/subscription?id=c003aaf0-f6a8-4046-a0d1-ccc238a04565
 #support-url:_https://t.me/frkn_support
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1420
 DNS_=_1.1.1.1
 
@@ -32,12 +32,12 @@ Endpoint_=_109.120.178.116:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_FR_AWG_EU-04__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_FR_AWG_EU-04__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
 
-vless://d5d418d8-5991-4219-90bf-d90ee7d88c52@bs.frkn.org:443?encryption=none&security=tls&type=xhttp&host=bs.frkn.org&path=%2Fdownloads&sni=bs.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlon%20%20d90ee7d88c52%20XHTTP-CDN
+vless://e62be877-1e2c-48a0-bd38-573604e37474@bs.frkn.org:443?encryption=none&security=tls&type=xhttp&host=bs.frkn.org&path=%2Fdownloads&sni=bs.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlon%20%20573604e37474%20XHTTP-CDN
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1420
 DNS_=_1.1.1.1
 
@@ -64,11 +64,11 @@ Endpoint_=_138.124.113.88:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_NL_AWG_EU-02__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_NL_AWG_EU-02__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
 
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1420
 DNS_=_1.1.1.1
 
@@ -95,11 +95,11 @@ Endpoint_=_177.177.20.172:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_AT_AWG_EU-09__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_AT_AWG_EU-09__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
 
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1280
 
 Jc_=_5
@@ -125,25 +125,11 @@ Endpoint_=_179.66.187.232:8443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_RU_Рилзопровод__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_RU_Рилзопровод__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
 
-
-____[Interface]
-____PrivateKey_=_+inFmZAXJ6YBEwujyWOgs82pMZ4GUTu50c4JrKkYc8k=
-____Address____=_10.100.18.145/32
-____DNS________=_
-
-____[Peer]
-____PublicKey___________=_bPVY+he2LwFgzRtFGHNeG68ywgMWe3/O5/zbg58leTU=
-____Endpoint____________=_179.66.187.232:51820
-____AllowedIPs__________=_0.0.0.0/0,_::/0
-____PersistentKeepalive_=_25
-
-____#_RU_Рилзопровод__conn_id:_9217b41d-6ed3-41cd-a55c-3dd9cfa54665
-____
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1420
 DNS_=_1.1.1.1
 
@@ -170,11 +156,11 @@ Endpoint_=_185.156.108.232:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_NL_AWG_EU-01__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_NL_AWG_EU-01__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
 
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1280
 
 Jc_=_5
@@ -200,25 +186,11 @@ Endpoint_=_194.87.37.60:8443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_RU_Рилзопровод__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_RU_Рилзопровод__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
 
-
-____[Interface]
-____PrivateKey_=_+inFmZAXJ6YBEwujyWOgs82pMZ4GUTu50c4JrKkYc8k=
-____Address____=_10.100.18.145/32
-____DNS________=_
-
-____[Peer]
-____PublicKey___________=_bPVY+he2LwFgzRtFGHNeG68ywgMWe3/O5/zbg58leTU=
-____Endpoint____________=_194.87.37.60:51820
-____AllowedIPs__________=_0.0.0.0/0,_::/0
-____PersistentKeepalive_=_25
-
-____#_RU_Рилзопровод__conn_id:_9217b41d-6ed3-41cd-a55c-3dd9cfa54665
-____
 [Interface]
-PrivateKey_=_MfrSWSdmdkhs/I9AJxsmBfWj/7lYXmiI/Wjr4m4k6kI=
-Address_=_100.64.11.221/32
+PrivateKey_=_PUs9LSB7bOkgSyRXJZtvMWUcooqIdpgJ6pIlqQhgIDY=
+Address_=_100.64.11.252/32
 MTU_=_1420
 
 Jc_=_5
@@ -244,13 +216,12 @@ Endpoint_=_195.133.80.155:8443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_25
 
-#_PL1__conn_id:_ad5b6b18-49ae-43cf-9ddc-68e4c37d00b9
+#_PL1__conn_id:_2d97ac18-a070-4916-acd8-ce6bf7fe16b7
 
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1420
-DNS_=_1.1.1.1
 
 Jc_=_5
 Jmin_=_69
@@ -270,16 +241,16 @@ I4_=_
 I5_=_
 
 [Peer]
-PublicKey_=_BMTx/Wg2FNs7WsIt+cnKc1XmsaDy8oACPRLVhAr13XM=
-Endpoint_=_195.133.80.155:443
+PublicKey_=_7mCea3xvKOnT5VicYBjqkg+0VJhhvKLjwIhObUjjjlk=
+Endpoint_=_195.133.80.155:8444
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_PL_AWG_EU-08__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_PL1__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
 
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1280
 
 Jc_=_5
@@ -305,25 +276,11 @@ Endpoint_=_217.149.29.118:8443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_RU_Рилзопровод__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_RU_Рилзопровод__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
 
-
-____[Interface]
-____PrivateKey_=_+inFmZAXJ6YBEwujyWOgs82pMZ4GUTu50c4JrKkYc8k=
-____Address____=_10.100.18.145/32
-____DNS________=_
-
-____[Peer]
-____PublicKey___________=_bPVY+he2LwFgzRtFGHNeG68ywgMWe3/O5/zbg58leTU=
-____Endpoint____________=_217.149.29.118:51820
-____AllowedIPs__________=_0.0.0.0/0,_::/0
-____PersistentKeepalive_=_25
-
-____#_RU_Рилзопровод__conn_id:_9217b41d-6ed3-41cd-a55c-3dd9cfa54665
-____
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1280
 DNS_=_1.1.1.1
 
@@ -352,11 +309,11 @@ Endpoint_=_5.180.43.201:444
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_Kazakhstan__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_Kazakhstan__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
 
 [Interface]
-PrivateKey_=_pgisVXSbECHh1dFrzdzqYGeoY+q0MmlupZp3J3yV3o0=
-Address_=_10.77.12.61/32
+PrivateKey_=_LBSvGeQaPz0p4iB354MnEFwnLz8gEx8P8MMVCgbi4e8=
+Address_=_10.77.12.129/32
 MTU_=_1420
 DNS_=_1.1.1.1
 
@@ -383,4 +340,4 @@ Endpoint_=_93.89.220.48:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_EST1__conn_id:_c310c28f-bfca-41ca-aa51-383e55c57bac
+#_EST1__conn_id:_3103a89f-02e0-4a7f-b714-f0385e1cfe77
