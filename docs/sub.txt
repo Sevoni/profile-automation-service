@@ -173,50 +173,6 @@ PersistentKeepalive_=_15
 #_NL_AWG_EU-01__conn_id:_af5f1a9f-f54c-44d8-b21d-406a9ad12565
 
 [Interface]
-PrivateKey_=_MlcU26cV90SKVtTiRiPBJ9c+mt2NoDvgK7AgK7C3204=
-Address_=_10.77.12.193/32
-MTU_=_1280
-
-Jc_=_5
-Jmin_=_69
-Jmax_=_136
-S1_=_48
-S2_=_47
-S3_=_22
-S4_=_11
-H1_=_1000000
-H2_=_2000000
-H3_=_3000000
-H4_=_4000000
-I1_=_
-I2_=_
-I3_=_
-I4_=_
-I5_=_
-
-[Peer]
-PublicKey_=_ugdosN1Smqf5WwYNpSQ4zK2QLbX687f9+Qm7zCnPOm8=
-Endpoint_=_194.87.37.60:8443
-AllowedIPs_=_0.0.0.0/0,_::/0
-PersistentKeepalive_=_15
-
-#_RU_Рилзопровод__conn_id:_af5f1a9f-f54c-44d8-b21d-406a9ad12565
-
-
-____[Interface]
-____PrivateKey_=_2su0x3Q/IVO3F60vcXGpw2cX1TliUouhiiu5n0dkjFI=
-____Address____=_10.100.18.253/32
-____DNS________=_
-
-____[Peer]
-____PublicKey___________=_bPVY+he2LwFgzRtFGHNeG68ywgMWe3/O5/zbg58leTU=
-____Endpoint____________=_194.87.37.60:51820
-____AllowedIPs__________=_0.0.0.0/0,_::/0
-____PersistentKeepalive_=_25
-
-____#_RU_Рилзопровод__conn_id:_b98e393f-547a-47df-b181-6341ac4fde6e
-____
-[Interface]
 PrivateKey_=_6CmsGbtuIJiQ8aK9PHBr2JqmcjTXxNKY5Qm8n+vkpIM=
 Address_=_100.64.12.42/32
 MTU_=_1420
@@ -250,6 +206,7 @@ PersistentKeepalive_=_25
 PrivateKey_=_MlcU26cV90SKVtTiRiPBJ9c+mt2NoDvgK7AgK7C3204=
 Address_=_10.77.12.193/32
 MTU_=_1420
+DNS_=_1.1.1.1
 
 Jc_=_5
 Jmin_=_69
@@ -269,12 +226,12 @@ I4_=_
 I5_=_
 
 [Peer]
-PublicKey_=_7mCea3xvKOnT5VicYBjqkg+0VJhhvKLjwIhObUjjjlk=
-Endpoint_=_195.133.80.155:8444
+PublicKey_=_BMTx/Wg2FNs7WsIt+cnKc1XmsaDy8oACPRLVhAr13XM=
+Endpoint_=_195.133.80.155:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_PL1__conn_id:_af5f1a9f-f54c-44d8-b21d-406a9ad12565
+#_PL_AWG_EU-08__conn_id:_af5f1a9f-f54c-44d8-b21d-406a9ad12565
 
 [Interface]
 PrivateKey_=_MlcU26cV90SKVtTiRiPBJ9c+mt2NoDvgK7AgK7C3204=
