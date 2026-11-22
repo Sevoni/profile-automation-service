@@ -32,7 +32,7 @@ Endpoint_=_109.120.178.116:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_France_AWG3.1__conn_id:_af5f1a9f-f54c-44d8-b21d-406a9ad12565
+#_FR_AWG_EU-04__conn_id:_af5f1a9f-f54c-44d8-b21d-406a9ad12565
 
 vless://c128498c-4abd-4335-8999-95e492d4f95d@bs.frkn.org:443?encryption=none&security=tls&type=xhttp&host=bs.frkn.org&path=%2Fdownloads&sni=bs.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlon%20%2095e492d4f95d%20XHTTP-CDN
 [Interface]
@@ -320,35 +320,3 @@ ____PersistentKeepalive_=_25
 
 ____#_RU_Рилзопровод__conn_id:_b98e393f-547a-47df-b181-6341ac4fde6e
 ____
-[Interface]
-PrivateKey_=_MlcU26cV90SKVtTiRiPBJ9c+mt2NoDvgK7AgK7C3204=
-Address_=_10.77.12.193/32
-MTU_=_1280
-DNS_=_1.1.1.1
-
-Jc_=_6
-Jmin_=_57
-Jmax_=_141
-S1_=_41
-S2_=_54
-S3_=_14
-S4_=_9
-H1_=_100000-200000
-H2_=_300000-400000
-H3_=_500000-600000
-H4_=_700000-800000
-I1_=_r_128
-I2_=_
-I3_=_
-I4_=_
-I5_=_
-RandomTrailers_=_on
-DisableCookies_=_on
-
-[Peer]
-PublicKey_=_cJRxoCK7cjucOBJqBlZJX9IkiweJ4fyqR9plBYWhwFw=
-Endpoint_=_5.180.43.201:444
-AllowedIPs_=_0.0.0.0/0,_::/0
-PersistentKeepalive_=_15
-
-#_Kazakhstan__conn_id:_af5f1a9f-f54c-44d8-b21d-406a9ad12565
