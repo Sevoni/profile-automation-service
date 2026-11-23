@@ -127,6 +127,20 @@ PersistentKeepalive_=_15
 
 #_RU_Рилзопровод__conn_id:_01860773-8bb3-49d8-bccd-3523f136ba56
 
+
+____[Interface]
+____PrivateKey_=_ELPYK7tx170zF/p3eWTKnpdaquJRskz6Be6TqNqjISA=
+____Address____=_10.100.19.55/32
+____DNS________=_
+
+____[Peer]
+____PublicKey___________=_bPVY+he2LwFgzRtFGHNeG68ywgMWe3/O5/zbg58leTU=
+____Endpoint____________=_179.66.187.232:51820
+____AllowedIPs__________=_0.0.0.0/0,_::/0
+____PersistentKeepalive_=_25
+
+____#_RU_Рилзопровод__conn_id:_11715bfe-7f5d-473d-aafe-4efd062d0691
+____
 [Interface]
 PrivateKey_=_hdQRjdkKaqnChjHJqHPuijmWPWhUOOfMQdrcwPLuKNg=
 Address_=_10.77.13.4/32
@@ -157,36 +171,6 @@ AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
 #_NL_AWG_EU-01__conn_id:_01860773-8bb3-49d8-bccd-3523f136ba56
-
-[Interface]
-PrivateKey_=_hdQRjdkKaqnChjHJqHPuijmWPWhUOOfMQdrcwPLuKNg=
-Address_=_10.77.13.4/32
-MTU_=_1280
-
-Jc_=_5
-Jmin_=_69
-Jmax_=_136
-S1_=_48
-S2_=_47
-S3_=_22
-S4_=_11
-H1_=_1000000
-H2_=_2000000
-H3_=_3000000
-H4_=_4000000
-I1_=_
-I2_=_
-I3_=_
-I4_=_
-I5_=_
-
-[Peer]
-PublicKey_=_ugdosN1Smqf5WwYNpSQ4zK2QLbX687f9+Qm7zCnPOm8=
-Endpoint_=_194.87.37.60:8443
-AllowedIPs_=_0.0.0.0/0,_::/0
-PersistentKeepalive_=_15
-
-#_RU_Рилзопровод__conn_id:_01860773-8bb3-49d8-bccd-3523f136ba56
 
 [Interface]
 PrivateKey_=_jXtLDqcSEOKFWqKgpFl7nlnLqBSxxt38Uq5xD/tuPcs=
@@ -222,7 +206,6 @@ PersistentKeepalive_=_25
 PrivateKey_=_hdQRjdkKaqnChjHJqHPuijmWPWhUOOfMQdrcwPLuKNg=
 Address_=_10.77.13.4/32
 MTU_=_1420
-DNS_=_1.1.1.1
 
 Jc_=_5
 Jmin_=_69
@@ -242,12 +225,12 @@ I4_=_
 I5_=_
 
 [Peer]
-PublicKey_=_BMTx/Wg2FNs7WsIt+cnKc1XmsaDy8oACPRLVhAr13XM=
-Endpoint_=_195.133.80.155:443
+PublicKey_=_7mCea3xvKOnT5VicYBjqkg+0VJhhvKLjwIhObUjjjlk=
+Endpoint_=_195.133.80.155:8444
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_PL_AWG_EU-08__conn_id:_01860773-8bb3-49d8-bccd-3523f136ba56
+#_PL1__conn_id:_01860773-8bb3-49d8-bccd-3523f136ba56
 
 [Interface]
 PrivateKey_=_hdQRjdkKaqnChjHJqHPuijmWPWhUOOfMQdrcwPLuKNg=
@@ -279,6 +262,20 @@ PersistentKeepalive_=_15
 
 #_RU_Рилзопровод__conn_id:_01860773-8bb3-49d8-bccd-3523f136ba56
 
+
+____[Interface]
+____PrivateKey_=_ELPYK7tx170zF/p3eWTKnpdaquJRskz6Be6TqNqjISA=
+____Address____=_10.100.19.55/32
+____DNS________=_
+
+____[Peer]
+____PublicKey___________=_bPVY+he2LwFgzRtFGHNeG68ywgMWe3/O5/zbg58leTU=
+____Endpoint____________=_217.149.29.118:51820
+____AllowedIPs__________=_0.0.0.0/0,_::/0
+____PersistentKeepalive_=_25
+
+____#_RU_Рилзопровод__conn_id:_11715bfe-7f5d-473d-aafe-4efd062d0691
+____
 [Interface]
 PrivateKey_=_hdQRjdkKaqnChjHJqHPuijmWPWhUOOfMQdrcwPLuKNg=
 Address_=_10.77.13.4/32
