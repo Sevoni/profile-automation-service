@@ -250,6 +250,7 @@ PersistentKeepalive_=_25
 PrivateKey_=_hdQRjdkKaqnChjHJqHPuijmWPWhUOOfMQdrcwPLuKNg=
 Address_=_10.77.13.4/32
 MTU_=_1420
+DNS_=_1.1.1.1
 
 Jc_=_5
 Jmin_=_69
@@ -269,12 +270,12 @@ I4_=_
 I5_=_
 
 [Peer]
-PublicKey_=_7mCea3xvKOnT5VicYBjqkg+0VJhhvKLjwIhObUjjjlk=
-Endpoint_=_195.133.80.155:8444
+PublicKey_=_BMTx/Wg2FNs7WsIt+cnKc1XmsaDy8oACPRLVhAr13XM=
+Endpoint_=_195.133.80.155:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_PL1__conn_id:_01860773-8bb3-49d8-bccd-3523f136ba56
+#_PL_AWG_EU-08__conn_id:_01860773-8bb3-49d8-bccd-3523f136ba56
 
 [Interface]
 PrivateKey_=_hdQRjdkKaqnChjHJqHPuijmWPWhUOOfMQdrcwPLuKNg=
