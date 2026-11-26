@@ -32,7 +32,7 @@ Endpoint_=_109.120.178.116:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_FR_AWG_EU-04__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
+#_France_AWG3.1__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
 
 vless://583d0c39-7cfe-4aa1-94fd-ba7ab763f1af@bs.frkn.org:443?encryption=none&security=tls&type=xhttp&host=bs.frkn.org&path=%2Fdownloads&sni=bs.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlon%20%20ba7ab763f1af%20XHTTP-CDN
 [Interface]
@@ -96,6 +96,20 @@ PersistentKeepalive_=_15
 
 #_RU_Рилзопровод__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
 
+
+____[Interface]
+____PrivateKey_=_fmluEitxCmO/KTdU9yolrFG6t1d+ISmipdLaZVq5OPw=
+____Address____=_10.100.19.91/32
+____DNS________=_
+
+____[Peer]
+____PublicKey___________=_bPVY+he2LwFgzRtFGHNeG68ywgMWe3/O5/zbg58leTU=
+____Endpoint____________=_179.66.187.232:51820
+____AllowedIPs__________=_0.0.0.0/0,_::/0
+____PersistentKeepalive_=_25
+
+____#_RU_Рилзопровод__conn_id:_6fbf2de0-5396-412d-ab16-251e01efbf3a
+____
 [Interface]
 PrivateKey_=_mWCeX7BsmYJKWqEKGYYXgj820AH9gmhc+2U759iDSR4=
 Address_=_10.77.13.67/32
@@ -157,6 +171,20 @@ PersistentKeepalive_=_15
 
 #_RU_Рилзопровод__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
 
+
+____[Interface]
+____PrivateKey_=_fmluEitxCmO/KTdU9yolrFG6t1d+ISmipdLaZVq5OPw=
+____Address____=_10.100.19.91/32
+____DNS________=_
+
+____[Peer]
+____PublicKey___________=_bPVY+he2LwFgzRtFGHNeG68ywgMWe3/O5/zbg58leTU=
+____Endpoint____________=_194.87.37.60:51820
+____AllowedIPs__________=_0.0.0.0/0,_::/0
+____PersistentKeepalive_=_25
+
+____#_RU_Рилзопровод__conn_id:_6fbf2de0-5396-412d-ab16-251e01efbf3a
+____
 [Interface]
 PrivateKey_=_XbQnBIFumUYTXP57AbWm7f6+DAmwxTun1A1jBoM16n4=
 Address_=_100.64.12.133/32
@@ -247,6 +275,20 @@ PersistentKeepalive_=_15
 
 #_RU_Рилзопровод__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
 
+
+____[Interface]
+____PrivateKey_=_fmluEitxCmO/KTdU9yolrFG6t1d+ISmipdLaZVq5OPw=
+____Address____=_10.100.19.91/32
+____DNS________=_
+
+____[Peer]
+____PublicKey___________=_bPVY+he2LwFgzRtFGHNeG68ywgMWe3/O5/zbg58leTU=
+____Endpoint____________=_217.149.29.118:51820
+____AllowedIPs__________=_0.0.0.0/0,_::/0
+____PersistentKeepalive_=_25
+
+____#_RU_Рилзопровод__conn_id:_6fbf2de0-5396-412d-ab16-251e01efbf3a
+____
 [Interface]
 PrivateKey_=_mWCeX7BsmYJKWqEKGYYXgj820AH9gmhc+2U759iDSR4=
 Address_=_10.77.13.67/32
