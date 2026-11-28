@@ -32,7 +32,7 @@ Endpoint_=_109.120.178.116:443
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_FR_AWG_EU-04__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
+#_France_AWG3.1__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
 
 vless://583d0c39-7cfe-4aa1-94fd-ba7ab763f1af@bs.frkn.org:443?encryption=none&security=tls&type=xhttp&host=bs.frkn.org&path=%2Fdownloads&sni=bs.frkn.org&mode=packet-up&extra=%7B%22uplinkHTTPMethod%22%3A%22GET%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingHeader%22%3A%22X-Cache%22%2C%22xPaddingKey%22%3A%22_dc%22%2C%22xPaddingMethod%22%3A%22tokenish%22%2C%22xPaddingObfsMode%22%3Atrue%2C%22xPaddingPlacement%22%3A%22queryInHeader%22%7D#BelySlon%20%20ba7ab763f1af%20XHTTP-CDN
 [Interface]
@@ -65,37 +65,6 @@ AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
 #_NL_AWG_EU-02__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
-
-[Interface]
-PrivateKey_=_mWCeX7BsmYJKWqEKGYYXgj820AH9gmhc+2U759iDSR4=
-Address_=_10.77.13.67/32
-MTU_=_1420
-DNS_=_1.1.1.1
-
-Jc_=_5
-Jmin_=_69
-Jmax_=_136
-S1_=_48
-S2_=_47
-S3_=_22
-S4_=_11
-H1_=_100000-200000
-H2_=_300000-400000
-H3_=_500000-600000
-H4_=_700000-800000
-I1_=_r_128
-I2_=_
-I3_=_
-I4_=_
-I5_=_
-
-[Peer]
-PublicKey_=_BMTx/Wg2FNs7WsIt+cnKc1XmsaDy8oACPRLVhAr13XM=
-Endpoint_=_177.177.20.172:443
-AllowedIPs_=_0.0.0.0/0,_::/0
-PersistentKeepalive_=_15
-
-#_AT_AWG_EU-09__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
 
 [Interface]
 PrivateKey_=_mWCeX7BsmYJKWqEKGYYXgj820AH9gmhc+2U759iDSR4=
@@ -206,7 +175,6 @@ PersistentKeepalive_=_25
 PrivateKey_=_mWCeX7BsmYJKWqEKGYYXgj820AH9gmhc+2U759iDSR4=
 Address_=_10.77.13.67/32
 MTU_=_1420
-DNS_=_1.1.1.1
 
 Jc_=_5
 Jmin_=_69
@@ -226,12 +194,12 @@ I4_=_
 I5_=_
 
 [Peer]
-PublicKey_=_BMTx/Wg2FNs7WsIt+cnKc1XmsaDy8oACPRLVhAr13XM=
-Endpoint_=_195.133.80.155:443
+PublicKey_=_7mCea3xvKOnT5VicYBjqkg+0VJhhvKLjwIhObUjjjlk=
+Endpoint_=_195.133.80.155:8444
 AllowedIPs_=_0.0.0.0/0,_::/0
 PersistentKeepalive_=_15
 
-#_PL_AWG_EU-08__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
+#_PL1__conn_id:_6f341510-b761-4f68-be76-0bbd057c1693
 
 [Interface]
 PrivateKey_=_mWCeX7BsmYJKWqEKGYYXgj820AH9gmhc+2U759iDSR4=
